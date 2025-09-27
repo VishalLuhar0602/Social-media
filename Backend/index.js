@@ -19,6 +19,7 @@ const corsOptions = {
   optionsSuccessStatus: 200 
 };
 app.use(cors(corsOptions));
+console.log('CORS configured for:', corsOptions.origin);
 
 // --- Middlewares ---
 app.use(express.json());
@@ -33,6 +34,7 @@ app.get('/', (req, res) => {
 // This is where the 404 is happening. This code makes sure the routes are registered.
 app.use('/api/auth', authRoutes);
 app.use('/api/posts', postRoutes);
+console.log('API routes /api/auth and /api/posts have been registered.');
 
 // --- Server Start ---
 const PORT = process.env.PORT || 5000;
