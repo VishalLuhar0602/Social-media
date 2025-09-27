@@ -13,7 +13,7 @@ connectDB();
 const app = express();
 
 // --- Production CORS Configuration ---
-// This explicitly allows your Netlify site to make requests
+// This explicitly allows YOUR Netlify site to make requests.
 const corsOptions = {
   origin: 'https://shiny-lily-ef230a.netlify.app',
   optionsSuccessStatus: 200 
@@ -24,11 +24,13 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 // --- Test Route ---
+// This helps us confirm the server is running.
 app.get('/', (req, res) => {
   res.send('API is running and correctly configured.');
 });
 
 // --- API Routes ---
+// This is where the 404 is happening. This code makes sure the routes are registered.
 app.use('/api/auth', authRoutes);
 app.use('/api/posts', postRoutes);
 
