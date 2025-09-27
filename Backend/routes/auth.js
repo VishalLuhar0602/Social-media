@@ -1,12 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const authMiddleware = require('../middlewares/authMiddleware'); // Import the middleware
-
-// Import the controller functions
 const { signup, login, getMe } = require('../controllers/authController');
+const authMiddleware = require('../middlewares/authMiddleware');
 
 // @route   POST api/auth/signup
-// @desc    Register a user
+// @desc    Register user
 // @access  Public
 router.post('/signup', signup);
 
@@ -16,8 +14,8 @@ router.post('/signup', signup);
 router.post('/login', login);
 
 // @route   GET api/auth/me
-// @desc    Get logged in user
+// @desc    Get logged in user's data
 // @access  Private
-router.get('/me', authMiddleware, getMe); // We've added authMiddleware here!
+router.get('/me', authMiddleware, getMe);
 
 module.exports = router;
